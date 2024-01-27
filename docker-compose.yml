@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  web:
+    container_name: ${WEBSITE_FOLDER}
+    build: ./${WEBSITE_FOLDER}
+    restart: always
+    volumes:
+      - ./${WEBSITE_FOLDER}/src:/app/src
+    command: npm run start
+    environment:
+        - WATCHPACK_POLLING=true
+    ports:
+      - published: 3000
+        target: 3000
+
+  
